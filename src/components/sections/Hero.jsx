@@ -30,7 +30,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden bg-black">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center text-white overflow-hidden bg-black"
+    >
       {/* Dot Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size:[20px_20px] opacity-20"></div>
 

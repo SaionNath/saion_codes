@@ -23,7 +23,11 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-black text-white px-6 py-24 flex items-center justify-center min-h-screen">
+    <section
+      id="contact"
+      className="bg-black text-white px-6 py-24 flex items-center justify-center min-h-screen"
+    >
+      {" "}
       {/* Outer glow ring */}
       <div className="relative w-full max-w-4xl">
         {/* Card */}
@@ -139,7 +143,6 @@ export default function Contact() {
             </motion.div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

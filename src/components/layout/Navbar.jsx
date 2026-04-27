@@ -1,16 +1,50 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { useTheme } from "next-themes";
 
-const links = ["Home", "About", "Skills", "Work", "Contact"];
+const links = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Work", id: "work" },
+  { name: "Contact", id: "contact" },
+];
 
 export default function Navbar() {
-  const [active, setActive] = useState("Home");
-//   const { resolvedTheme, setTheme } = useTheme();
+  const [active, setActive] = useState("home");
+  //   const { resolvedTheme, setTheme } = useTheme();
 
-//   const toggleTheme = () => {
-//     setTheme(resolvedTheme === "dark" ? "light" : "dark");
-//   };
+  //   const toggleTheme = () => {
+  //     setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  //   };
+
+  useEffect(() => {
+    const sections = links.map((l) => document.getElementById(l.id));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const activeLink = links.find((l) => l.id === id);
+            if (activeLink) {
+              setActive(activeLink.id);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.6, // adjust sensitivity
+      },
+    );
+
+    sections.forEach((sec) => {
+      if (sec) observer.observe(sec);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
@@ -19,18 +53,23 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {links.map((link) => (
             <button
-              key={link}
-              onClick={() => setActive(link)}
+              key={link.id}
+              onClick={() => {
+                setActive(link.id);
+                document.getElementById(link.id)?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="relative px-4 py-1.5 text-sm text-gray-300"
             >
-              {active === link && (
+              {active === link.id && (
                 <motion.span
                   layoutId="active-pill"
                   className="absolute inset-0 bg-white/10 rounded-full"
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 />
               )}
-              <span className="relative z-10">{link}</span>
+              <span className="relative z-10">{link.name}</span>
             </button>
           ))}
         </div>

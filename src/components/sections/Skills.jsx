@@ -10,13 +10,14 @@ const skills = [
   { name: "Express", category: "Backend", level: 75 },
   { name: "MongoDB", category: "Database", level: 80 },
   { name: "Tailwind CSS", category: "Styling", level: 92 },
-
 ];
 
 export default function Skills() {
   return (
-    <section className="min-h-screen bg-black text-white px-6 py-20">
-      
+    <section
+      id="skills"
+      className="min-h-screen bg-black text-white px-6 py-20"
+    >
       {/* Title */}
       <h2 className="text-3xl md:text-4xl font-bold mb-12">
         &gt; The Secret Sauce

@@ -102,7 +102,8 @@ export default function About() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-black text-white px-6 py-24">
+    <section id="about" className="min-h-screen bg-black text-white px-6 py-24">
+      {" "}
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.h2
@@ -252,9 +253,7 @@ export default function About() {
                   key={label}
                   className="rounded-xl border border-white/10 bg-white/5 p-4 text-center"
                 >
-                  <p className="text-xl font-bold text-gray-400">
-                    {value}
-                  </p>
+                  <p className="text-xl font-bold text-gray-400">{value}</p>
                   <p className="text-xs text-gray-500 mt-1">{label}</p>
                 </div>
               ))}

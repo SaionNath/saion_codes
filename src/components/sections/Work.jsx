@@ -199,7 +199,7 @@ export default function Work() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-black text-white px-6 py-24">
+    <section id="work" className="min-h-screen bg-black text-white px-6 py-24">
       {/* Section Header */}
       <div className="max-w-6xl mx-auto mb-14">
         <motion.p
